@@ -1,0 +1,36 @@
+<h2>Welcome {{user.firstName}}</h2>
+<div class="formContainer">
+  <form [formGroup]="pitchForm" (ngSubmit)="onSubmit()">
+     <div formGroupName="client">
+        <h3>Client Information:</h3>
+        <div class="form-row">
+          <div class="col"> 
+            <label>
+                First Name:
+              <input type="text" class="form-control" formControlName="clientFirstName" placeholder="First name">
+            </label>       
+            <label>
+              Last Name:
+              <input type="text" class="form-control" formControlName="clientLastName" placeholder="Last name">
+            </label>
+            <label>
+              Title:
+              <input type="text" class="form-control" formControlName="clientTitle" placeholder="Title">
+            </label>
+            <label>
+              Organization:
+              <input type="text" class="form-control" formControlName="clientOrganization" placeholder="Organization">
+            </label>
+            <label>
+              Area:
+              <select class="form-control" formControlName="clientArea">
+                <option *ngFor="let area of clientAreas" [value]="area">{{area.name}}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!pitchForm.valid">Generate Sales Pitch</button>
+  </form>
+</div>
