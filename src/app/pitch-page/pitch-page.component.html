@@ -1,36 +1,53 @@
 <h2>Welcome {{user.firstName}}</h2>
-<div class="formContainer">
-  <form [formGroup]="pitchForm" (ngSubmit)="onSubmit()">
-     <div formGroupName="client">
-        <h3>Client Information:</h3>
-        <div class="form-row">
-          <div class="col"> 
-            <label>
-                First Name:
-              <input type="text" class="form-control" formControlName="clientFirstName" placeholder="First name">
-            </label>       
-            <label>
-              Last Name:
-              <input type="text" class="form-control" formControlName="clientLastName" placeholder="Last name">
-            </label>
-            <label>
-              Title:
-              <input type="text" class="form-control" formControlName="clientTitle" placeholder="Title">
-            </label>
-            <label>
-              Organization:
-              <input type="text" class="form-control" formControlName="clientOrganization" placeholder="Organization">
-            </label>
-            <label>
-              Area:
-              <select class="form-control" formControlName="clientArea">
-                <option *ngFor="let area of clientAreas" [value]="area">{{area.name}}</option>
-              </select>
-            </label>
-          </div>
-        </div>
+<form [formGroup]="clientForm" (ngSubmit)="generatePitch()">
+  <div class="formContainer">
+    <div formGroupName="client">
+      <h3>Client Information:</h3>
+      <div class="form-row">
+        <div class="col"> 
+          <label>
+            First Name:
+            <input type="text" class="form-control" formControlName="clientFirstName" placeholder="First name">
+            <div *ngIf="cf.clientFirstName?.errors"><h3>First name is required</h3></div>     
+           
+          </label>  
+         <label>
+            Last Name:
+            <input type="text" class="form-control" formControlName="clientLastName" placeholder="Last name">
+          </label>
+          <label>
+            Title:
+            <input type="text" class="form-control" formControlName="clientTitle" placeholder="Title">
+          </label>
+          <label>
+            Organization:
+            <input type="text" class="form-control" formControlName="clientOrganization" placeholder="Organization">
+          </label>
+          <label>
+            Area:
+            <select class="form-control" formControlName="clientArea">
+              <option *ngFor="let area of clientAreas" [value]="area.areaName">{{area.areaName}}</option>
+            </select>
+          </label>
+       </div>
       </div>
-      <br>
-    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!pitchForm.valid">Generate Sales Pitch</button>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!clientForm.valid">Generate Sales Pitch</button>
+  </div>
+  <br>
+</form>
+
+<div *ngIf="submitClientData" class="pitchInput">
+  <form [formGroup]="pitchForm">
+    <mat-form-field>
+      <textarea matInput rows="20" cols="50" formControlName="pitch"></textarea>
+    </mat-form-field>
+    <button ngxClipboard [cbContent]="pitchForm.value.pitch" (click)="copyPitch()" type="button" class="btn btn-primary btn-lg btn-block">Copy Sales Pitch</button>
   </form>
 </div>
+
+
+
+
+

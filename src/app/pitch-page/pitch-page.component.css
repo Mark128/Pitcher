@@ -14,3 +14,21 @@ h3{
     text-align: center;
 }
 
+.pitchInput{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 20px;
+    border: 1px solid #000;
+    display: flex;
+    
+}
+
+  
+.pitchInput > * {
+   width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    white-space: normal;
+}
