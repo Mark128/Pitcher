@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { SalesService } from '../Services/sales.service';
-import { UserService } from '../Services/user.service';
+import { SalesService } from '../../Services/sales.service';
+import { UserService } from '../../Services/user.service';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({

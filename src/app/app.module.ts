@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PitchPageComponent } from './pitch-page/pitch-page.component';
+import { PitchPageComponent } from './components/pitch-page/pitch-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -13,13 +12,25 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatModule } from './mat.module';
 import { ClipboardModule } from 'ngx-clipboard';
 
+import { CoreModule } from './core/core.module';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AuthenticationService } from './Services/authentication.service';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     PitchPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    SignupComponent,
+    SigninComponent,
+    VerifyEmailComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -27,11 +38,13 @@ import { ClipboardModule } from 'ngx-clipboard';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatModule,
-    ClipboardModule
+    ClipboardModule,
+    CoreModule    
   ],
   providers: [
     SalesService,
-    UserService
+    UserService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
