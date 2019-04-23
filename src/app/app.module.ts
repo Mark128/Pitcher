@@ -4,8 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PitchPageComponent } from './components/pitch-page/pitch-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { SalesService } from './Services/sales.service';
 import { UserService } from './Services/user.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -36,6 +36,7 @@ import { AuthenticationService } from './Services/authentication.service';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatModule,
     ClipboardModule,

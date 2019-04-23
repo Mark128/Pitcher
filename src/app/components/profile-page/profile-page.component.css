@@ -1,0 +1,59 @@
+.welcome{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.profileContainer{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 20px;
+    width: auto;
+    border: 1px solid #000;
+}
+
+.userInfo{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.profileButtons{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.pitchInput{
+    border-radius: 5px;
+    border: 0.5px solid lightgrey;  
+    background-color:white;
+}
+
+.pitchInputDisabled{
+    border-radius: 5px;
+    border: 0.5px solid lightgrey;  
+    background-color:lightgrey;
+}
+
+input[readonly]
+{
+    background-color:lightgrey;
+}
+
+.editButton{
+   position: absolute; 
+   right: 0;
+   margin-top: 30px;
+   margin-right: 10px;
+}
+  
+.pitchInput > * {
+   width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    white-space: normal;
+}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PitchPageComponent } from './components/pitch-page/pitch-page.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';

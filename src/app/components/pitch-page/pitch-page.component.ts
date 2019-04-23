@@ -18,9 +18,7 @@ export class PitchPageComponent implements OnInit {
 
   clientAreas;
   user;
-  pitchData;
-
-  
+  pitchData;  
 
   constructor(private fb: FormBuilder, private salesService: SalesService, private userService: UserService) { }
 
@@ -44,9 +42,7 @@ export class PitchPageComponent implements OnInit {
         clientTitle: ['', Validators.required],
         clientArea: ['', Validators.required]
       })
-    });
-
-    
+    });   
   }
 
   // convenience getter for easy access to form fields
