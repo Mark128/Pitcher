@@ -6,22 +6,23 @@
     <h5>{{fdmUser?.title}}</h5>     
 </div>
 
-
+<form (ngSubmit)="saveUserChanges(profileForm)" #profileForm="ngForm">
 <div *ngIf="fdmUser" class="profileContainer">
     <div class="userInfo">
         <h4>Email:</h4>
-        <input [readonly]="enableEditing" class="form-control" [(ngModel)]="fdmUser.email">
+        <input [readonly]="enableEditing" name="email" class="form-control" [(ngModel)]="fdmUser.email">
         <br>
         <h4>Title:</h4>
-        <input [readonly]="enableEditing" class="form-control" [(ngModel)]="fdmUser.title">
+        <input [readonly]="enableEditing" name="title" class="form-control" [(ngModel)]="fdmUser.title">
         <br>
         <h4>Pitch Salutation:</h4>
-        <input [readonly]="enableEditing" class="form-control" [(ngModel)]="fdmUser.pitchSalutation">
+        <input [readonly]="enableEditing" name="pitchSalutation" class="form-control" [(ngModel)]="fdmUser.pitchSalutation">
         <br>
         <h4>Pitch Intro:</h4>  
         <div class="pitchInput">             
             <mat-form-field>
                 <textarea 
+                name="pitchIntro"
                 [class.pitchInputDisabled]="enableEditing"
                 [class.pitchInput]="!enableEditing"
                 [disabled]="enableEditing" matInput rows="3" cols="50" [(ngModel)]="fdmUser.pitchIntro"></textarea>
@@ -32,6 +33,7 @@
         <div>             
             <mat-form-field>
                 <textarea
+                name="pitchStart"
                 [class.pitchInputDisabled]="enableEditing"
                 [class.pitchInput]="!enableEditing"
                 [disabled]="enableEditing" matInput rows="2" cols="50" [(ngModel)]="fdmUser.pitchStart"></textarea>
@@ -42,6 +44,7 @@
         <div class="pitchInput">             
             <mat-form-field>
                 <textarea 
+                name="pitchConclusion"
                 [class.pitchInputDisabled]="enableEditing"
                 [class.pitchInput]="!enableEditing"
                 [disabled]="enableEditing" matInput rows="3" cols="50" [(ngModel)]="fdmUser.pitchConclusion"></textarea>
@@ -52,6 +55,7 @@
         <div class="pitchInput">             
             <mat-form-field>
                 <textarea 
+                name="pitchFinal"
                 [class.pitchInputDisabled]="enableEditing"
                 [class.pitchInput]="!enableEditing"
                 [disabled]="enableEditing" matInput rows="1" cols="50" [(ngModel)]="fdmUser.pitchFinal"></textarea>
@@ -59,10 +63,11 @@
         </div>        
     </div>
     <div *ngIf="!enableEditing" class="profileButtons">
-        <button class="btn btn-primary" (click)="saveUserChanges()">Save Changes</button>
         <button class="btn btn-danger" (click)="cancelChanges()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>        
     </div>
 </div>
+</form>
 
 
 

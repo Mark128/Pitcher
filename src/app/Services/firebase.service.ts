@@ -34,22 +34,29 @@ export class FirebaseService {
       return ref.where('uid', '==', uid)
     });
 
-    this.fdmUser = this.fdmUsersCollection.valueChanges();
-    return this.fdmUser;
+    return this.fdmUsersCollection.snapshotChanges();
   }
 
-  editFdmUser(user){
-    let docId;
-    this.fdmUsersCollection = this.afs.collection('fdmUsers')
-    this.snapshot = this.fdmUsersCollection.snapshotChanges()
-    .pipe(map(arr => {
-        docId = arr.map(snap => snap.payload.doc.id);
-      }));
-    
-    this.fdmUserDoc = this.afs.doc(`fdmUsers/${docId}`)
-    //this.updatedUser = this.fdmUserDoc.valueChanges();
-    this.fdmUserDoc.update(user);
-  
+  getFdmUserDocId(uid){
+    this.fdmUsersCollection = this.afs.collection('fdmUsers', ref => {
+      return ref.where('uid', '==', uid)
+    });
 
+    console.log(this.fdmUsersCollection);
+
+    //return this.fdmUsersCollection.snapshotChanges();
+  }
+
+  editFdmUser(user, docId){   
+    this.afs.collection('fdmUsers').doc(docId).set(
+      {
+        email: user.email,
+        title: user.title,
+        pitchSalutation: user.pitchSalutation,
+        pichIntro: user.pitchIntro,
+        pitchStart: user.pitchStart,
+        pitchConclusion: user.pitchConclusion,
+        pitchFinal: user.pitchFinal
+      }, {merge: true});   
   }
 }
