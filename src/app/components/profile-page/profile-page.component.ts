@@ -25,8 +25,8 @@ export class ProfilePageComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   ngOnInit() {
     this.currentUser = this.authService.userData;
-    //this.getUser(this.currentUser.uid);
-    this.getUser('ZvqdUOAQCYg0ihz69GVdaa68Lot2');
+    this.getUser(this.currentUser.uid);
+    //this.getUser('ZvqdUOAQCYg0ihz69GVdaa68Lot2');
   }
 
   async getUser(uid){

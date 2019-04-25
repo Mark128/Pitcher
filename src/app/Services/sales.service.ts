@@ -30,25 +30,34 @@ FDM employs over 80 nationalities working together as a team globally, and 50% o
 
   generatePitch(user:any, pitchData:any){  
 
+   // console.log(`user info: ${JSON.stringify(user)} + pitchData: ${JSON.stringify(pitchData)}`);
+   
     let firstName = pitchData.client.clientFirstName;
     let lastName = pitchData.client.clientLastName;
     let org = pitchData.client.clientOrganization;
     let area = pitchData.client.clientArea;
     let title = pitchData.client.clientTitle;
     let pitchContent = this.selectPitch(area);
+    let salutation = user.pitchSalutation;
+    let intro = user.pitchIntro;
+    let pitchStart = user.pitchStart;
+    let conclusion = user.pitchConclusion;
+    let final = user.pitchFinal;
+    let userFirst = user.firstName;
+    let userLast = user.lastName;
+
     let pitch =`
-${user.salutation} ${firstName},
+${salutation} ${firstName},
 
-${user.intro}
+${intro}
 
-${user.pitchStart} ${title} at ${org}. ${pitchContent}
+${pitchStart} ${title} at ${org}. ${pitchContent}
 
-${user.conclusion}
+${conclusion}
 
-${user.final}
-${user.firstName} ${user.lastName}
+${final}
+${userFirst} ${userLast}
     `;
-
     return pitch;
   }
 
@@ -59,8 +68,7 @@ ${user.firstName} ${user.lastName}
     pitchContent = this.areaPitch.find(p => {
       return p.areaName === area;
     });
-
-  
+      
     return pitchContent.pitch;
   }
 }

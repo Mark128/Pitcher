@@ -3,6 +3,8 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { SalesService } from '../../Services/sales.service';
 import { UserService } from '../../Services/user.service';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import { FirebaseService } from 'src/app/Services/firebase.service';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
   selector: 'pitch-page',
@@ -20,7 +22,11 @@ export class PitchPageComponent implements OnInit {
   user;
   pitchData;  
 
-  constructor(private fb: FormBuilder, private salesService: SalesService, private userService: UserService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private salesService: SalesService, 
+    private fire: FirebaseService,
+    private authService: AuthenticationService) { }
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
@@ -28,8 +34,20 @@ export class PitchPageComponent implements OnInit {
   ngOnInit() {
     this.clientAreas = this.salesService.areaPitch;
     this.createForm();
-    this.user = this.userService.getCurrentUser();
+    this.user =  this.authService.userData;
+    if(this.user)
+     this.getUser(this.user.uid);
+    //this.getUser('ZvqdUOAQCYg0ihz69GVdaa68Lot2');
   }
+
+  async getUser(uid){
+    if(!uid) return;
+
+    this.fire.getFdmUser(uid).subscribe( user => {
+        this.user = user[0].payload.doc.data();      
+    })      
+  }
+  
 
   createForm(){
     this.clientForm = this.fb.group({
@@ -56,8 +74,9 @@ export class PitchPageComponent implements OnInit {
     }
 
     this.pitchData = this.clientForm.value;
+    console.log(JSON.stringify(this.user));
     this.pitch = this.salesService.generatePitch(this.user, this.pitchData);
-
+   
     this.pitchForm = this.fb.group({
       pitch: [this.pitch]
     });

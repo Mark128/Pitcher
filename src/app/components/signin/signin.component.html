@@ -9,17 +9,14 @@
           <input type="password" class="form-control" placeholder="Password" #userPassword required>
         </div>
         <div class="formGroup">
-        <input type="button" class="btn btn-primary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+          <input type="button" class="btn btn-primary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+          <button class="btn btn-danger" routerLink="/forgot-password">Forgot Password?</button>
         </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
+        <div>
+          <br>
+          <div>Need an account?</div>
+         <button class="btn btn-warning" routerLink="/signup">Register</button>
         </div>
-        <div class="forgotPassword">
-         <span routerLink="/forgot-password">Forgot Password?</span>
-        </div>
-      </div>
-      <div>
-        <span>Don't have an account?<span class="redirect" routerLink="/signup"> Sign Up</span></span>
       </div>
     </div>
 </div>

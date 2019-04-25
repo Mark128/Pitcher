@@ -22,9 +22,6 @@ export class FirebaseService {
 
   getFdmUsers(){
     this.fdmUsersCollection = this.afs.collection('fdmUsers'); //reference to DB collection
-    //('users', ref => { return ref.orderBy('firstName', 'desc').limit
-    // }); -- for ordering
-
     this.fdmUsers = this.fdmUsersCollection.valueChanges(); // observable of fdmUsers data
     return this.fdmUsers;
   }
@@ -35,16 +32,6 @@ export class FirebaseService {
     });
 
     return this.fdmUsersCollection.snapshotChanges();
-  }
-
-  getFdmUserDocId(uid){
-    this.fdmUsersCollection = this.afs.collection('fdmUsers', ref => {
-      return ref.where('uid', '==', uid)
-    });
-
-    console.log(this.fdmUsersCollection);
-
-    //return this.fdmUsersCollection.snapshotChanges();
   }
 
   editFdmUser(user, docId){   

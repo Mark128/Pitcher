@@ -1,4 +1,6 @@
-<h2>Welcome {{user.firstName}}</h2>
+<div *ngIf="user">
+  <h2>Welcome {{user?.firstName}} {{user?.lastName}}</h2>
+</div>
 <form [formGroup]="clientForm" (ngSubmit)="generatePitch()">
   <div class="formContainer">
     <div formGroupName="client">

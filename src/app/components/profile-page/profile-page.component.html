@@ -1,6 +1,10 @@
 <span class="editButton">
     <button class="btn btn-warning" (click)="toggleEdit()">Edit Profile</button>
 </span>
+
+<span class="signOutButton">
+        <button class="btn btn-danger" (click)="authService.SignOut()">Sign Out</button>
+    </span>
 <div *ngIf="fdmUser" class="welcome">
     <h2>{{fdmUser.firstName}} {{fdmUser.lastName}}</h2>
     <h5>{{fdmUser?.title}}</h5>     

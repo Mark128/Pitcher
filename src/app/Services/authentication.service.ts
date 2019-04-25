@@ -61,7 +61,7 @@ export class AuthenticationService {
   SendVerificationMail() {
     return this.afAuth.auth.currentUser.sendEmailVerification()
     .then(() => {
-     this.router.navigate(['verify-email']);
+     this.router.navigate(['signin']);
     })
   }
 
@@ -100,17 +100,40 @@ export class AuthenticationService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user) {
-  const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-  const userData: User = {
-    uid: user.uid,
-    email: user.email,
-    displayName: user.displayName,
-    photoURL: user.photoURL,
-    emailVerified: user.emailVerified
-  }
-  return userRef.set(userData, {
-    merge: true
-   })
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userData: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified
+    }
+
+    var first = user.email.split('.');
+    var last = (first[1].split('@')); 
+
+    const fdmUserData = {
+      uid: user.uid,
+      firstName: first[0],
+      lastName: last[0],
+      title: 'N/A',
+      email: user.email,
+      pitchIntro: 'I Hope this finds you well.  I’d like to introduce myself and FDM. We have a unique business model in which we partner with local universities, take in fresh graduate talent and train them in business and technology, deploying them with our clients afterwards and supporting the initial stages of their careers in IT.',
+      pitchConclusion: 'Is there a time next week that would work for you to discuss how our program can offer value in building a secure and flexible pipeline of local talent for your teams?',
+      pitchFinal: 'Thanks,',
+      pitchSalutation: 'Hello',
+      pitchStart: 'I noticed you are the'
+    };
+
+    new Promise<any>((resolve, reject) => {
+      this.afs.collection('fdmUsers')
+      .add(fdmUserData)
+      .then(res => {}, err => reject(err));
+    }); 
+  
+    return userRef.set(userData, {
+      merge: true
+    })   
   }
 
   // Sign out 
