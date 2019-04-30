@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { SalesService } from '../../Services/sales.service';
-import { UserService } from '../../Services/user.service';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import { FirebaseService } from 'src/app/Services/firebase.service';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+
 
 @Component({
   selector: 'pitch-page',
@@ -13,14 +13,18 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 })
 export class PitchPageComponent implements OnInit {
 
+  //Forms
   clientForm: FormGroup;
   pitchForm: FormGroup;
-  submitClientData: boolean = false;
-  pitch: String = null;
-
+  //Form Variables
   clientAreas;
-  user;
+  submitClientData: boolean = false;
   pitchData;  
+
+  //User data
+  fdmUser;
+  userID;
+  
 
   constructor(
     private fb: FormBuilder, 
@@ -32,22 +36,12 @@ export class PitchPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.clientAreas = this.salesService.areaPitch;
+    this.clientAreas = this.salesService.getPitches();
+
     this.createForm();
-    this.user =  this.authService.userData;
-    if(this.user)
-     this.getUser(this.user.uid);
-    //this.getUser('ZvqdUOAQCYg0ihz69GVdaa68Lot2');
+    this.fdmUser =  JSON.parse(localStorage.getItem('fdmUser'));
+    //this.fdmUser = this.getfdmUser('ZvqdUOAQCYg0ihz69GVdaa68Lot2');
   }
-
-  async getUser(uid){
-    if(!uid) return;
-
-    this.fire.getFdmUser(uid).subscribe( user => {
-        this.user = user[0].payload.doc.data();      
-    })      
-  }
-  
 
   createForm(){
     this.clientForm = this.fb.group({
@@ -74,17 +68,18 @@ export class PitchPageComponent implements OnInit {
     }
 
     this.pitchData = this.clientForm.value;
-    console.log(JSON.stringify(this.user));
-    this.pitch = this.salesService.generatePitch(this.user, this.pitchData);
-   
+    this.pitchData.firstName = this.fdmUser.firstName;
+    this.pitchData.lastName = this.fdmUser.lastName;
+    let pitch = this.salesService.generatePitch(this.fdmUser, this.pitchData);
+
+    console.log(pitch);
+    
     this.pitchForm = this.fb.group({
-      pitch: [this.pitch]
-    });
+      pitch: [pitch]
+    }); 
   }
 
   copyPitch(){
-    console.log(this.pitchForm.value.pitch)
+    console.log('copied pitch');
   } 
-  
-
 }

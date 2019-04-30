@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { auth } from 'firebase/app';
 import {User} from '../Services/user.service';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AuthenticationService {
   
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
+    public fs : FirebaseService,
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
     public ngZone: NgZone // NgZone service to remove outside scope warning
@@ -23,22 +25,26 @@ export class AuthenticationService {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
+        this.setFdmUserData(this.userData);
+        JSON.parse(localStorage.getItem('fdmUser'));
         JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', null);
+        localStorage.setItem('fdmUser', null);
+        JSON.parse(localStorage.getItem('fdmUser'));
         JSON.parse(localStorage.getItem('user'));
       }
     })
   }
 
   // Sign in with email/password
-  SignIn(email, password) {
+  async SignIn(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then((result) => {
       this.ngZone.run(() => {
-      this.router.navigate(['/profile']);
-    });
-      this.SetUserData(result.user);
+        this.setFdmUserData(result.user);
+        this.router.navigate(['/welcome']);
+    });      
     }).catch((error) => {
       window.alert(error.message)
     })
@@ -81,20 +87,13 @@ export class AuthenticationService {
     return (user !== null) ? true : false;
   }
 
-
-  // Auth logic to run auth providers
-  AuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-    .then((result) => {
-      this.ngZone.run(() => {
-      this.router.navigate(['/']);
-    })
-      this.SetUserData(result.user);
-    }).catch((error) => {
-       window.alert(error)
+  setFdmUserData(user){
+    this.fs.getFdmUser(user.uid).subscribe( user => {
+      localStorage.setItem('fdmUser', JSON.stringify(user[0].payload.doc.data()));
+      JSON.parse(localStorage.getItem('fdmUser'));
     })
   }
-
+  
 
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
@@ -140,7 +139,8 @@ export class AuthenticationService {
   SignOut() {
     return this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('user');
-     this.router.navigate(['signin']);
+      localStorage.removeItem('fdmUser');
+      this.router.navigate(['signin']);
     })
   }
 }

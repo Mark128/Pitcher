@@ -23,20 +23,11 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(public authService: AuthenticationService, private fb:FirebaseService, private formBuilder: FormBuilder) { }
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
+  
   ngOnInit() {
-    this.currentUser = this.authService.userData;
-    this.getUser(this.currentUser.uid);
+   this.fdmUser =  JSON.parse(localStorage.getItem('fdmUser'));
+   console.log(`profile page: ${this.fdmUser}`)
     //this.getUser('ZvqdUOAQCYg0ihz69GVdaa68Lot2');
-  }
-
-  async getUser(uid){
-    if(!uid) return;
-
-    this.fb.getFdmUser(uid).subscribe( user => {
-        this.fdmUser = user[0].payload.doc.data();
-        this.fdmUserCopy = this.fdmUser;
-        this.docId = user[0].payload.doc.id;
-    })      
   }
 
   getAllUsers(){
@@ -49,7 +40,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   cancelChanges(){
-    this.fdmUser = this.getUser(this.fdmUserCopy.uid);
+    this.fdmUser =  JSON.parse(localStorage.getItem('fdmUser'));
     this.toggleEdit();
   }
 

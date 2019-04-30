@@ -31,3 +31,9 @@ mat-form-field {
     width: 100%;
     white-space: normal;
 }
+
+.welcome{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}

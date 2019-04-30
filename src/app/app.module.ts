@@ -18,6 +18,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AuthenticationService } from './Services/authentication.service';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 
@@ -30,7 +31,8 @@ import { AuthenticationService } from './Services/authentication.service';
     SignupComponent,
     SigninComponent,
     VerifyEmailComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

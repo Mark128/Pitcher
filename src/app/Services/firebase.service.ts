@@ -17,6 +17,8 @@ export class FirebaseService {
   fdmUserDoc: AngularFirestoreDocument<FdmUser>;
   updatedUser: Observable<FdmUser>;
   snapshot: any;
+  pitchesCollection: AngularFirestoreCollection<any>;
+  pitches: any;
 
   constructor(private afs: AngularFirestore) { }
 
@@ -45,5 +47,11 @@ export class FirebaseService {
         pitchConclusion: user.pitchConclusion,
         pitchFinal: user.pitchFinal
       }, {merge: true});   
+  }
+
+  getPitches(){
+    this.pitchesCollection = this.afs.collection('pitches'); //reference to DB collection
+    this.pitches = this.pitchesCollection.valueChanges(); 
+    return this.pitches;
   }
 }

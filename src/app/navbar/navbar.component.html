@@ -14,7 +14,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-          <img src="../../assets/img/fdm_logo.gif" width="30%" height="30%">   
+          <img src="../../assets/img/fdm_logo.gif" width="30%" height="30%">  
       </a>
       <div class="d-flex flex-grow-1">
           <span class="w-100 d-lg-none d-block"></span>
@@ -30,6 +30,9 @@
               <li class="nav-item">
                   <a *ngIf="authService.isLoggedIn"  class="nav-item nav-link active" routerLink="/pitch">Pitch </a>
               </li>
+            <li class="nav-item">
+                <a *ngIf="!authService.isLoggedIn"  class="nav-item nav-link active" routerLink="/signin">Sign In </a>
+             </li>
               <li class="nav-item">
                   <a href="#" class="nav-item nav-link active">Tech Terms</a>
               </li>

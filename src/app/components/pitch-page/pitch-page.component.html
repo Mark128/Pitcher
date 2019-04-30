@@ -1,5 +1,6 @@
-<div *ngIf="user">
-  <h2>Welcome {{user?.firstName}} {{user?.lastName}}</h2>
+<div class="welcome" *ngIf="fdmUser">
+  <h2>Welcome {{fdmUser?.firstName}} {{fdmUser?.lastName}}</h2>
+  <span>Please fill in all client information below to generate a custom sales pitch</span>
 </div>
 <form [formGroup]="clientForm" (ngSubmit)="generatePitch()">
   <div class="formContainer">
@@ -27,8 +28,9 @@
           </label>
           <label>
             Area:
-            <select class="form-control" formControlName="clientArea">
-              <option *ngFor="let area of clientAreas" [value]="area.areaName">{{area.areaName}}</option>
+            <select class="form-control" formControlName="clientArea" >
+              <option value="" disabled selected> Select the client area </option>
+              <option *ngFor="let area of clientAreas | async" [value]="area.areaName">{{area.areaName}}</option>
             </select>
           </label>
        </div>
