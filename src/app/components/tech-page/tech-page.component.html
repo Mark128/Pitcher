@@ -1,0 +1,10 @@
+<div class ="myContainer">
+    <div class="headerTitle">
+     <h1>Tech Terms</h1>   
+   </div>  
+    <div class="row">     
+      <div *ngFor="let tech of techTerms" class="col-md-6">
+       <tech-thumbnail [tech]="tech"></tech-thumbnail>
+      </div>
+    </div>
+  </div>

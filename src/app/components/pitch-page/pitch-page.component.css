@@ -37,3 +37,9 @@ mat-form-field {
     margin-top: 20px;
     margin-bottom: 50px;
 }
+
+.clientTitle{
+    margin-top: 15px;
+}
+
+.headerTitle {background-color: black; color: white; text-align: center;}

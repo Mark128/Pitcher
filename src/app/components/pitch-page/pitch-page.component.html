@@ -1,11 +1,14 @@
+<div class="headerTitle">
+    <h1>Sales Pitcher</h1>   
+</div>
 <div class="welcome" *ngIf="fdmUser">
-  <h2>Welcome {{fdmUser?.firstName}} {{fdmUser?.lastName}}</h2>
+  <h2>Welcome {{fdmUser?.firstName}}</h2>
   <span>Please fill in all client information below to generate a custom sales pitch</span>
 </div>
 <form [formGroup]="clientForm" (ngSubmit)="generatePitch()">
   <div class="formContainer">
     <div formGroupName="client">
-      <h3>Client Information:</h3>
+      <h3 class="clientTitle">Client Information:</h3>
       <div class="form-row">
         <div class="col"> 
           <label>

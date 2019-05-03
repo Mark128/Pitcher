@@ -19,6 +19,8 @@ export class FirebaseService {
   snapshot: any;
   pitchesCollection: AngularFirestoreCollection<any>;
   pitches: any;
+  techCollection: AngularFirestoreCollection<any>;
+  tech: any;
 
   constructor(private afs: AngularFirestore) { }
 
@@ -53,5 +55,19 @@ export class FirebaseService {
     this.pitchesCollection = this.afs.collection('pitches'); //reference to DB collection
     this.pitches = this.pitchesCollection.valueChanges(); 
     return this.pitches;
+  }
+
+  getAllTech(){
+    this.techCollection = this.afs.collection('tech'); //reference to DB collection
+    this.tech = this.techCollection.valueChanges(); // observable of fdmUsers data
+    return this.tech;
+  }
+
+  getTech(name){
+    this.techCollection = this.afs.collection('tech', ref => {
+      return ref.where('name', '==', name)
+    });
+
+    return this.techCollection.snapshotChanges();
   }
 }

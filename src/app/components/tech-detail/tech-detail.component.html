@@ -1,0 +1,29 @@
+<div class="techContainer">
+  <h1>{{tech?.name}}</h1>
+  <h6>{{tech?.category}}</h6>
+  <h4>{{tech?.description}}</h4>
+  <span>
+     
+      <div class="trainLogo">
+        <h5 *ngIf="tech?.trainable">Trainable</h5>
+        <h5 *ngIf="!tech?.trainable">Not Trainable</h5>
+        <fa *ngIf="tech?.trainable"  name="check-circle" size="5x" style="color:green"></fa>
+        <fa *ngIf="!tech?.trainable" name="times-circle" size="5x" style="color:red"></fa>
+        <div>
+            <h4>Training Locations:</h4>
+            <ul>
+             <li>
+               <h6 *ngIf="tech?.training.internal">In House</h6>
+             </li>
+             <li>
+               <a *ngIf="tech?.training.pluralsight" [href]="tech?.training.pluralsight">Pluralsight</a>
+             </li> 
+             <li>
+                <a *ngIf="tech?.training.pluralsight" [href]="tech?.training.pluralsight">Pluralsight</a>
+              </li> 
+            </ul>
+          </div>
+      </div>
+     
+  </span>  
+</div>

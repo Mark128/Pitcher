@@ -19,6 +19,10 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AuthenticationService } from './Services/authentication.service';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { TechPageComponent } from './components/tech-page/tech-page.component';
+import { TechThumbnailComponent } from './components/tech-thumbnail/tech-thumbnail.component';
+import { TechDetailComponent } from './components/tech-detail/tech-detail.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 
@@ -32,7 +36,11 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     SigninComponent,
     VerifyEmailComponent,
     ForgotPasswordComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    TechPageComponent,
+    TechThumbnailComponent,
+    TechDetailComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -42,7 +50,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     BrowserAnimationsModule,
     MatModule,
     ClipboardModule,
-    CoreModule    
+    CoreModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     SalesService,

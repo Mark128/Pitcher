@@ -1,0 +1,33 @@
+.thumbnail {
+    min-height:100px; 
+    padding-bottom:10px;
+}
+
+
+.title{
+    background-color: black;
+    border: 1px solid #000;
+}
+
+.hoverwell:hover {
+    background-color: lightblue;
+    cursor: pointer;    
+    color: black;
+}
+          
+.well {
+    color: black;
+    border-style: solid; 
+    background-color: lightgrey; 
+    border-width: 1px; 
+    padding-left: 10px;  
+    border-color: black;
+}
+            
+.container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.bold {font-weight: bold;}
+        

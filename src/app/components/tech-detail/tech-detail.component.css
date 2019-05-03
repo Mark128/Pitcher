@@ -1,0 +1,25 @@
+.techLogo{
+    width: 200px;
+    height: 200px;
+    position:inline-block;
+
+}
+
+.trainLogo{
+    border: 1px solid #000;
+    margin-top: 50px;
+    width: auto;
+}
+
+.techContainer{
+    text-align: center;
+}
+
+li {
+    display:inline-block;
+    *display:inline; /*IE7*/
+    *zoom:1; /*IE7*/
+    margin-right:10px;
+}
+
+ul li {list-style-type: disc;}
