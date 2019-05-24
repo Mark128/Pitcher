@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore'
-import { map } from "rxjs/operators";
 import {FdmUser} from '../data/fdmUser';
 import { Observable } from 'rxjs';
 
@@ -70,4 +68,10 @@ export class FirebaseService {
 
     return this.techCollection.snapshotChanges();
   }
+
+  addTech(tech){
+    
+    this.afs.collection('tech').add(tech);
+  }
+
 }

@@ -13,7 +13,7 @@ export class AddTechComponent implements OnInit {
   public category: string;
   public logoUrl: string;
 
-  public isTrainable: boolean;
+  public isTrainable = false;
 
   public isInternal: boolean;
   public isPluralsight: boolean
@@ -22,7 +22,7 @@ export class AddTechComponent implements OnInit {
   public internalUrl: string;
   public pluralsightUrl: string;
   public linkedinUrl: string; 
-  submitted = false;
+  public submitted = false;
 
   techCategories = [
     'Development Framework',
@@ -32,16 +32,43 @@ export class AddTechComponent implements OnInit {
     'Data Science Tool',
     'Business Analysis Framework',
     'Project Management Framework',
-    'Application Support Framework'
+    'Application Support Framework',
+    'InfoSec Tool'
   ];
 
-  constructor(private fb: FirebaseService) { }
+  constructor(private fb: FirebaseService) {
+
+  }
 
   ngOnInit() {
   }
  
   onSubmit(formValues) { 
-    console.log(formValues);
+  
+    if(formValues.internalUrl === undefined)
+      formValues.internalUrl = 'n/a';
+    
+    if(formValues.pluralsightUrl === undefined)
+      formValues.pluralsightUrl = 'n/a';
+
+    if(formValues.linkedinUrl === undefined)
+      formValues.linkedinUrl = 'n/a';
+
+
+    let newTech = {
+      name: formValues.name,
+      description: formValues.description,
+      logoUrl: formValues.logo,
+      category: formValues.category,
+      trainable: this.isTrainable,
+      training : {
+        internal: formValues.internalUrl,
+        pluralsight: formValues.pluralsightUrl,
+        linkedin: formValues.linkedinUrl
+      }
+    };
+
+    this.fb.addTech(newTech);
   }
 
 }
