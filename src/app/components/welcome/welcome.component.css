@@ -1,0 +1,31 @@
+.buttonContainer{
+    display: block;
+    float: none;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right:auto;  
+    color: black;
+    border-style: solid; 
+    border-width: 1px;   
+    border-color: black;
+    width: 20%;
+}
+
+.btn{
+    display:block;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.headerTitle {
+    background-color: black; 
+    color: white; 
+    text-align: center;
+}
+
+.pageCaption{
+    text-align: center;
+}

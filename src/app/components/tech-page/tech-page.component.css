@@ -1,2 +1,20 @@
 .headerTitle {background-color: black; color: white; text-align: center;}
-   .welcome {min-height:1020px; text-align: center; }
+.welcome {min-height:1020px; text-align: center; }
+.addButton{
+   float:right;
+   margin-right: 5%;
+   margin-top: 10%;
+   position:relative;
+   text-align: center; 
+}
+.addButton:hover{
+   background-color: lightblue;
+   cursor: pointer;    
+   color: lightblue;
+}
+
+.addButtonButton{
+   border:none;
+   background-color: white;
+}
+

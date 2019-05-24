@@ -24,6 +24,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   goToTechTerms(){
-    this.router.navigate(['/techterms']);
+    this.router.navigate(['/tech']);
   }
 }

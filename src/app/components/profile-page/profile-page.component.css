@@ -64,3 +64,5 @@ mat-form-field {
     width: 100%;
     white-space: normal;
 }
+
+.headerTitle {background-color: black; color: white; text-align: center;}

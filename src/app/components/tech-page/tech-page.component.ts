@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/Services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tech-page',
@@ -10,7 +11,7 @@ export class TechPageComponent implements OnInit {
 
   techTerms= [];
 
-  constructor(private fb: FirebaseService) { }
+  constructor(private fb: FirebaseService, private router:Router) { }
 
   ngOnInit() {
    this.fb.getAllTech().subscribe( t => {
@@ -18,4 +19,7 @@ export class TechPageComponent implements OnInit {
    });
   }
 
+  addNewTechItem(){
+    this.router.navigate(['/addTech'])
+  }
 }

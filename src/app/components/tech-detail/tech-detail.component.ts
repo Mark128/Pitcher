@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FirebaseService } from 'src/app/Services/firebase.service';
 import { switchMap } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ export class TechDetailComponent implements OnInit {
 
   tech;
 
-  constructor(private fb: FirebaseService, private route: ActivatedRoute) { }
+  constructor(private fb: FirebaseService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -22,5 +22,9 @@ export class TechDetailComponent implements OnInit {
         this.tech = t[0].payload.doc.data();
       })
     });
-  }  
+  } 
+  
+  goBack(){
+    this.router.navigate(['/tech']);
+  }
 }

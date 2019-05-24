@@ -23,6 +23,7 @@ import { TechPageComponent } from './components/tech-page/tech-page.component';
 import { TechThumbnailComponent } from './components/tech-thumbnail/tech-thumbnail.component';
 import { TechDetailComponent } from './components/tech-detail/tech-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AddTechComponent } from './components/add-tech/add-tech.component';
 
 
 
@@ -40,6 +41,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     TechPageComponent,
     TechThumbnailComponent,
     TechDetailComponent,
+    AddTechComponent,
    
   ],
   imports: [

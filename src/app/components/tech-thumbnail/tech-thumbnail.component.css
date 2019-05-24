@@ -1,33 +1,53 @@
-.thumbnail {
-    min-height:100px; 
-    padding-bottom:10px;
-}
-
 
 .title{
     background-color: black;
     border: 1px solid #000;
 }
 
-.hoverwell:hover {
+.card{
+    width: 20rem;
+    color: black;
+    border-style: solid; 
+    background-color: lightgrey; 
+    border-width: 1px;   
+    border-color: black;
+}
+
+.card-header{
+    background-color: black;
+    text-align: center;
+}
+
+.card:hover {
     background-color: lightblue;
     cursor: pointer;    
     color: black;
 }
           
-.well {
-    color: black;
-    border-style: solid; 
-    background-color: lightgrey; 
-    border-width: 1px; 
-    padding-left: 10px;  
-    border-color: black;
-}
             
-.container {
-    padding-top: 10px;
-    padding-bottom: 10px;
+
+.techItem{
+    margin-left:5%;
+    margin-right: 5%;
 }
 
-.bold {font-weight: bold;}
+.techDescription{
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+    text-align: center;
+}
+
+.trainable{
+    display:block;
+    text-align: center;
+}
+
+.trainableIcon{
+    margin-top:5px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
         
