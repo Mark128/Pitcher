@@ -18,3 +18,12 @@
    background-color: white;
 }
 
+.addButtonButton:hover{
+   border:none;
+   color: rgb(44, 122, 211);
+}
+
+.col-md-4{
+   padding-top:10px;
+}
+

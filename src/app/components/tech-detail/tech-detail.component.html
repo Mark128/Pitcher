@@ -17,13 +17,13 @@
             <h5>Training Locations:</h5>
             <ul>
              <li>
-               <h6 *ngIf="tech?.training.internal || tech?.training.internal == 'n/a'">In House</h6>
+               <h6 *ngIf="tech?.training.internal == 'n/a'">In House</h6>
              </li>
              <li>
-               <a *ngIf="tech?.training.pluralsight || tech?.training.pluralsight == 'n/a'" [href]="tech?.training.pluralsight">Pluralsight</a>
+               <a *ngIf="tech?.training.pluralsight != 'n/a'" [href]="tech?.training.pluralsight">Pluralsight</a>
              </li> 
               <li>
-               <a *ngIf="tech?.training.linkedin || tech?.training.linkedin == 'n/a'" [href]="tech?.training.linkedin">LinkedIn Learning</a>
+               <a *ngIf="tech?.training.linkedin !== 'n/a'" [href]="tech?.training.linkedin">LinkedIn Learning</a>
              </li> 
             </ul>
           </div>

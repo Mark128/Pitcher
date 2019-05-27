@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FirebaseService } from 'src/app/Services/firebase.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DialogService } from 'src/app/Services/dialog.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'add-tech',
@@ -7,6 +11,8 @@ import { FirebaseService } from 'src/app/Services/firebase.service';
   styleUrls: ['./add-tech.component.css']
 })
 export class AddTechComponent implements OnInit {
+
+  @ViewChild('techForm') public techForm: NgForm;
 
   public techName: string;
   public description: string;
@@ -36,7 +42,7 @@ export class AddTechComponent implements OnInit {
     'InfoSec Tool'
   ];
 
-  constructor(private fb: FirebaseService) {
+  constructor(private fb: FirebaseService, private router: Router, private dialogService: DialogService) {
 
   }
 
@@ -54,7 +60,6 @@ export class AddTechComponent implements OnInit {
     if(formValues.linkedinUrl === undefined)
       formValues.linkedinUrl = 'n/a';
 
-
     let newTech = {
       name: formValues.name,
       description: formValues.description,
@@ -69,6 +74,21 @@ export class AddTechComponent implements OnInit {
     };
 
     this.fb.addTech(newTech);
+    this.router.navigate(['/tech']);
+  }
+
+  cancel(){
+    this.router.navigate(['/tech']);
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+    if (!this.techForm.dirty) {
+      return true;
+    }
+    // Otherwise ask the user with the dialog service and return its
+    // observable which resolves to true or false when the user decides
+    return this.dialogService.confirm('Are you sure you want to cancel?');
   }
 
 }

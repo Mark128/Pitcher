@@ -10,6 +10,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { TechPageComponent } from './components/tech-page/tech-page.component';
 import { TechDetailComponent } from './components/tech-detail/tech-detail.component';
 import { AddTechComponent } from './components/add-tech/add-tech.component';
+import { CanDeactivateGuard } from './can-deactivate.guard';
 
 const routes: Routes = [
   { path: 'pitch', component: PitchPageComponent },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'tech', component: TechPageComponent},
   { path: 'tech/:name', component: TechDetailComponent},
   { path: 'welcome', component: WelcomeComponent},
-  { path: 'addTech', component: AddTechComponent},
+  { path: 'addTech', component: AddTechComponent, canDeactivate: [CanDeactivateGuard]},
   { path: 'signin', component: SigninComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},

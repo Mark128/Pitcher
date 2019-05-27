@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PitchPageComponent } from './components/pitch-page/pitch-page.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { SalesService } from './Services/sales.service';
@@ -24,6 +24,8 @@ import { TechThumbnailComponent } from './components/tech-thumbnail/tech-thumbna
 import { TechDetailComponent } from './components/tech-detail/tech-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AddTechComponent } from './components/add-tech/add-tech.component';
+import { DialogService } from './Services/dialog.service';
+import { CanDeactivateGuard } from './can-deactivate.guard';
 
 
 
@@ -58,7 +60,9 @@ import { AddTechComponent } from './components/add-tech/add-tech.component';
   providers: [
     SalesService,
     UserService,
-    AuthenticationService
+    AuthenticationService,
+    CanDeactivateGuard,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })
