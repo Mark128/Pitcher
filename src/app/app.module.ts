@@ -26,6 +26,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AddTechComponent } from './components/add-tech/add-tech.component';
 import { DialogService } from './Services/dialog.service';
 import { CanDeactivateGuard } from './can-deactivate.guard';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -62,6 +63,7 @@ import { CanDeactivateGuard } from './can-deactivate.guard';
     UserService,
     AuthenticationService,
     CanDeactivateGuard,
+    AuthGuard,
     DialogService
   ],
   bootstrap: [AppComponent]

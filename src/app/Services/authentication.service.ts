@@ -12,6 +12,7 @@ import { FirebaseService } from './firebase.service';
 export class AuthenticationService {
 
   userData: any;
+  redirectUrl: string;
   
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service

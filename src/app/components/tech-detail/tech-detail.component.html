@@ -1,5 +1,5 @@
 <div class="backButton">
-  <fa name="arrow-left" size="3x" style="color:blue" (click)="goBack()"></fa>
+  <fa name="arrow-left" size="2x" style="color:black" (click)="goBack()"></fa>
   <div>Go Back</div>
 </div>
 
@@ -17,7 +17,7 @@
             <h5>Training Locations:</h5>
             <ul>
              <li>
-               <h6 *ngIf="tech?.training.internal == 'n/a'">In House</h6>
+               <h6 *ngIf="tech?.training.internal != 'n/a'">In House</h6>
              </li>
              <li>
                <a *ngIf="tech?.training.pluralsight != 'n/a'" [href]="tech?.training.pluralsight">Pluralsight</a>

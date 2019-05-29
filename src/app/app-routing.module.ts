@@ -11,10 +11,11 @@ import { TechPageComponent } from './components/tech-page/tech-page.component';
 import { TechDetailComponent } from './components/tech-detail/tech-detail.component';
 import { AddTechComponent } from './components/add-tech/add-tech.component';
 import { CanDeactivateGuard } from './can-deactivate.guard';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: 'pitch', component: PitchPageComponent },
-  { path: 'profile', component: ProfilePageComponent},
+  { path: 'pitch', component: PitchPageComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: 'tech', component: TechPageComponent},
   { path: 'tech/:name', component: TechDetailComponent},
   { path: 'welcome', component: WelcomeComponent},
