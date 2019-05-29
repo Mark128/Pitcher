@@ -12,12 +12,13 @@ import { TechDetailComponent } from './components/tech-detail/tech-detail.compon
 import { AddTechComponent } from './components/add-tech/add-tech.component';
 import { CanDeactivateGuard } from './can-deactivate.guard';
 import { AuthGuard } from './auth.guard';
+import { TechDetailResolverService } from './Services/tech-detail-resolver.service';
 
 const routes: Routes = [
   { path: 'pitch', component: PitchPageComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: 'tech', component: TechPageComponent},
-  { path: 'tech/:name', component: TechDetailComponent},
+  { path: 'tech/:name', component: TechDetailComponent, resolve: {tech: TechDetailResolverService}},
   { path: 'welcome', component: WelcomeComponent},
   { path: 'addTech', component: AddTechComponent, canDeactivate: [CanDeactivateGuard]},
   { path: 'signin', component: SigninComponent},

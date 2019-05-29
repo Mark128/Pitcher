@@ -1,20 +1,19 @@
-<div class="techItem" [routerLink]="['/tech', tech.name]">
-  <div class="card" >
-    <div class="techContainer">
-      <div class="card-header text-white">
-          <h3>{{tech?.name}}</h3>     
-      </div>
-      <div class="techDescription">
-        <h6>{{tech?.category}}</h6>
-      </div>
-    </div> 
-    <hr>
-    <div class="trainable">
-      <h6 *ngIf="tech?.trainable">Trainable</h6>
-      <h6 *ngIf="!tech?.trainable">Not Trainable</h6>
+<div class="card" [routerLink]="['/tech', tech.name]">
+  <div class="techContainer">
+    <div class="card-header text-white">
+      <h3>{{tech?.name}}</h3>
+    </div>
+    <div class="techDescription">
+      <h6>{{tech?.category}}</h6>
+    </div>
+  </div>
+  <hr>
+  <div class="trainable">
+    <h6 *ngIf="tech?.trainable">Trainable</h6>
+    <h6 *ngIf="!tech?.trainable">Not Trainable</h6>
     <div class="trainableIcon">
-      <fa *ngIf="tech?.trainable"  name="check-circle" size="3x" style="color:green"></fa>
-      <fa *ngIf="!tech?.trainable" name="times-circle" size="3x" style="color:red"></fa> 
-    </div>  
+      <fa *ngIf="tech?.trainable" name="check-circle" size="3x" style="color:green"></fa>
+      <fa *ngIf="!tech?.trainable" name="times-circle" size="3x" style="color:red"></fa>
+    </div>
   </div>
 </div>

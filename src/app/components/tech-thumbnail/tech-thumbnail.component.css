@@ -5,17 +5,23 @@
 }
 
 .card{
-    width: 20rem;
+    display:inline-block;
+    width: 70%;
     color: black;
     border-style: solid; 
     background-color: lightgrey; 
     border-width: 1px;   
     border-color: black;
+    margin-left:2%;
+    margin-right:2%;
+    margin-bottom:5%;
+    min-height: 95%;
 }
 
 .card-header{
     background-color: black;
     text-align: center;
+    min-height: 100%;
 }
 
 .card:hover {
@@ -23,8 +29,7 @@
     cursor: pointer;    
     color: black;
 }
-           
-            
+       
 
 .techItem{
     margin-left:5%;

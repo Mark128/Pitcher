@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FirebaseService } from 'src/app/Services/firebase.service';
 import { switchMap } from 'rxjs/operators';
+import { Tech } from 'src/app/data/tech';
 
 @Component({
   selector: 'tech-detail',
@@ -15,12 +16,9 @@ export class TechDetailComponent implements OnInit {
   constructor(private fb: FirebaseService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      let techName = params["name"];
-      this.fb.getTech(techName).subscribe(t => {
-        console.log(t[0].payload.doc.data());
-        this.tech = t[0].payload.doc.data();
-      })
+    console.log('in tech detail');
+    this.route.data.subscribe((data: {tech: Tech}) => {
+      this.tech = data.tech;
     });
   } 
   

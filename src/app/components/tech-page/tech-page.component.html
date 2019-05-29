@@ -1,17 +1,16 @@
-<div class="addButton">
-  <button class="addButtonButton" (click)="addNewTechItem()">
-    <h5>Add New Item</h5>
-    <fa name="plus-circle" size="4x"></fa>
-  </button>
-</div>
-<div class ="myContainer">
-   <div class="headerTitle">
-     <h1>Tech Terms</h1>   
-   </div>  
-    <div class="row">     
-      <div *ngFor="let tech of techTerms" class="col-md-4">
-       <tech-thumbnail [tech]="tech"></tech-thumbnail>
-      </div>
+
+
+<div class="headerTitle">
+  <h1>Tech Terms</h1>
+  <div class="addButton">
+      <button class="addButtonButton" (click)="addNewTechItem()">
+        <h5>Add New Item</h5>
+        <fa name="plus-circle" size="4x"></fa>
+      </button>
     </div>
+</div>
+<div class="row">
+  <div *ngFor="let tech of techTerms" class="col-md-4">
+    <tech-thumbnail [tech]="tech"></tech-thumbnail>
   </div>
- 
+</div>

@@ -3,7 +3,7 @@
 .addButton{
    float:right;
    margin-right: 5%;
-   margin-top: 10%;
+  
    position:relative;
    text-align: center; 
 }
@@ -23,7 +23,5 @@
    color: rgb(44, 122, 211);
 }
 
-.col-md-4{
-   padding-top:10px;
-}
+
 
