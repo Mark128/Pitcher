@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
   selector: 'welcome',
@@ -9,7 +10,7 @@ import {  Router } from '@angular/router';
 export class WelcomeComponent implements OnInit {
 
   fdmUser;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.fdmUser =  JSON.parse(localStorage.getItem('fdmUser'));
