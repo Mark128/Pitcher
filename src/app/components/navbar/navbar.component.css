@@ -13,3 +13,8 @@
 .nav-item:hover{
    background-color: rgb(44, 122, 211);
 }
+
+.nav-item{
+    display:block;
+    float:right;
+}
